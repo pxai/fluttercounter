@@ -17,5 +17,4 @@ jobs:
 workflows:
   test:
     jobs:
-      - flutter/unit_test:
-          version: 3.2.6
+      - flutter/unit_test
