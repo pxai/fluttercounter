@@ -15,6 +15,7 @@ jobs:
           command: bundle exec fastlane distribute
           working_directory: ios
 workflows:
-  distribute:
+  test:
     jobs:
-      - distribute
+      - flutter/unit_test:
+          version: 3.2.6
