@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'mytext.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    print("Counter value ${_counter}");
+    print("Counter value: ${_counter}");
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -66,6 +67,13 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    print("Decrement Counter value: ${_counter}");
+    setState(() {
+      _counter--;
     });
   }
 
@@ -78,49 +86,63 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
+        appBar: AppBar(
+          // TRY THIS: Try changing the color here to a specific color (to
+          // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+          // change color while the other colors stay the same.
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+        ),
+        body: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            //
+            // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+            // action in the IDE, or press "p" in the console), to see the
+            // wireframe for each widget.
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const MyText(text: "Aupa hey"),
+              Text(
+                'You have pushed the button this many time:',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            FloatingActionButton(
+              // first FAB to perform decrement
+              onPressed: _decrementCounter,
+              tooltip: 'Increment',
+              child: Icon(Icons.delete),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            FloatingActionButton(
+              // second FAB to perform increment
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: Icon(Icons.add),
             ),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        )
+        // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }
