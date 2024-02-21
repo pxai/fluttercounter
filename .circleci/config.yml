@@ -8,7 +8,7 @@ jobs:
       name: android/android-machine
     steps:
       - flutter/install_sdk_and_pub:
-          version: 3.0.3
+          version: 2.17.5
       - flutter/install_android_gradle_dependencies
       - flutter/install_android_gem
       - run:
