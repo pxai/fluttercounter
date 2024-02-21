@@ -1,14 +1,14 @@
 version: '2.1'
 orbs:
-  android: circleci/android:current
-  flutter: circleci/flutter:current
+  android: circleci/android@1.0.3
+  flutter: circleci/flutter@2.0.2
 jobs:
   distribute:
     executor:
       name: android/android-machine
     steps:
       - flutter/install_sdk_and_pub:
-          version: 3.2.6
+          version: 3.0.3
       - flutter/install_android_gradle_dependencies
       - flutter/install_android_gem
       - run:
