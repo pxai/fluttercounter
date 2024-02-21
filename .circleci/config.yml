@@ -1,7 +1,7 @@
 version: '2.1'
 orbs:
-  android: circleci/android@1.0.3
-  flutter: circleci/flutter@2.0.0
+  android: circleci/android:current
+  flutter: circleci/flutter:current
 jobs:
   distribute:
     executor:
