@@ -8,6 +8,24 @@ jobs:
         - run:
             name: Flutter Build
             command: flutter build apk
+
+  test:
+    docker:
+      - image: mobiledevops/flutter-sdk-image:3.16.4
+    steps:
+      - checkout
+      - run:
+          name: Flutter Tests
+          command: flutter test
+
+workflows:
+  version: '2'
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
 # workflows:
 #   test:
 #     jobs:
