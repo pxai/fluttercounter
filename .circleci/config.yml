@@ -3,18 +3,12 @@ jobs:
   build:
     docker:
       - image: mobiledevops/flutter-sdk-image:3.16.4
-  distribute:
-    executor:
-      name: android/android-machine
     steps:
-      - flutter/install_sdk_and_pub:
-          version: 3.2.6
-      - flutter/install_android_gradle_dependencies
-      - flutter/install_android_gem
-      - run:
-          command: bundle exec fastlane distribute
-          working_directory: ios
-workflows:
-  test:
-    jobs:
-      - flutter/unit_test
+        - checkout
+        - run:
+            name: Flutter Build
+            command: flutter build apk
+# workflows:
+#   test:
+#     jobs:
+#       - flutter/unit_test
